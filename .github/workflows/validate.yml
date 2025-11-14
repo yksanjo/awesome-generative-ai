@@ -1,0 +1,73 @@
+name: Validate Awesome List
+
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'DISCOVERIES.md'
+      - 'tools/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'README.md'
+      - 'DISCOVERIES.md'
+      - 'tools/**'
+  workflow_dispatch:
+
+jobs:
+  validate-markdown:
+    name: Validate Markdown Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      
+      - name: Run Markdown Validator
+        run: |
+          cd tools
+          python3 markdown-validator.py
+      
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: markdown-validation-report
+          path: tools/output/markdown-validation-report.json
+
+  validate-links:
+    name: Validate Links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests
+      
+      - name: Run Link Validator
+        run: |
+          cd tools
+          python3 link-validator.py
+        continue-on-error: true  # Don't fail PRs on link errors, just report
+      
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-validation-report
+          path: tools/output/link-validation-report.json
+
+
+

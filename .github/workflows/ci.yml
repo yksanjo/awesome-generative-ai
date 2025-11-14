@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  lint-and-validate:
+    name: Lint and Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests
+      
+      - name: Validate Markdown Format
+        run: |
+          cd tools
+          python3 markdown-validator.py
+      
+      - name: Check for trailing whitespace
+        run: |
+          if grep -r '[[:space:]]$' README.md DISCOVERIES.md; then
+            echo "❌ Found trailing whitespace. Please remove it."
+            exit 1
+          fi
+      
+      - name: Validate Links (non-blocking)
+        run: |
+          cd tools
+          python3 link-validator.py || true
+        continue-on-error: true
+
+
+

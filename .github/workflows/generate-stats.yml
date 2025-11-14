@@ -1,0 +1,46 @@
+name: Generate Stats and JSON
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'README.md'
+      - 'DISCOVERIES.md'
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    name: Generate Statistics and JSON
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      
+      - name: Generate Statistics
+        run: |
+          cd tools
+          python3 stats-generator.py
+      
+      - name: Generate JSON Export
+        run: |
+          cd tools
+          python3 json-exporter.py
+      
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add tools/output/*.json tools/output/*.md
+          git diff --staged --quiet || (git commit -m "Auto-update stats and JSON export [skip ci]" && git push)
+
+
+
