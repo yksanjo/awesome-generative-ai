@@ -1,0 +1,15 @@
+# Output files
+output/
+*.json
+*.md
+!README.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+

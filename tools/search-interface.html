@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Generative AI - Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .search-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .filter-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-card .label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .results {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .results-header {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .project-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .project-card h3 {
+            margin-bottom: 10px;
+        }
+        
+        .project-card h3 a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        
+        .project-card h3 a:hover {
+            text-decoration: underline;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .badge-section {
+            background: #667eea;
+            color: white;
+        }
+        
+        .badge-opensource {
+            background: #28a745;
+            color: white;
+        }
+        
+        .badge-source {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .filters {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Awesome Generative AI</h1>
+            <p>Search and explore the curated list of Generative AI projects</p>
+        </header>
+        
+        <div class="search-box">
+            <input type="text" 
+                   class="search-input" 
+                   id="searchInput" 
+                   placeholder="Search projects by name, description, or category...">
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="sectionFilter">Section</label>
+                    <select id="sectionFilter">
+                        <option value="">All Sections</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sourceFilter">Source</label>
+                    <select id="sourceFilter">
+                        <option value="">All Sources</option>
+                        <option value="main">Main List</option>
+                        <option value="discoveries">Discoveries</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="opensourceFilter">Open Source</label>
+                    <select id="opensourceFilter">
+                        <option value="">All Projects</option>
+                        <option value="true">Open Source Only</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="stats" id="stats">
+                <div class="stat-card">
+                    <div class="number" id="totalProjects">-</div>
+                    <div class="label">Total Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="filteredProjects">-</div>
+                    <div class="label">Filtered Results</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="opensourceCount">-</div>
+                    <div class="label">Open Source</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="results">
+            <div id="resultsContainer">
+                <div class="loading">Loading projects...</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let allProjects = [];
+        let filteredProjects = [];
+        
+        // Load JSON data
+        async function loadData() {
+            try {
+                const response = await fetch('output/awesome-generative-ai.json');
+                const data = await response.json();
+                
+                // Combine main list and discoveries
+                allProjects = [
+                    ...data.main_list.projects.map(p => ({...p, source: 'main'})),
+                    ...data.discoveries_list.projects.map(p => ({...p, source: 'discoveries'}))
+                ];
+                
+                // Populate section filter
+                const sections = [...new Set(allProjects.map(p => p.section).filter(Boolean))].sort();
+                const sectionFilter = document.getElementById('sectionFilter');
+                sections.forEach(section => {
+                    const option = document.createElement('option');
+                    option.value = section;
+                    option.textContent = section;
+                    sectionFilter.appendChild(option);
+                });
+                
+                updateStats();
+                filterProjects();
+            } catch (error) {
+                document.getElementById('resultsContainer').innerHTML = 
+                    '<div class="no-results">Error loading data. Please run the JSON exporter first.</div>';
+                console.error('Error loading data:', error);
+            }
+        }
+        
+        function updateStats() {
+            const opensourceCount = allProjects.filter(p => p.opensource).length;
+            document.getElementById('totalProjects').textContent = allProjects.length;
+            document.getElementById('opensourceCount').textContent = opensourceCount;
+        }
+        
+        function filterProjects() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const sectionFilter = document.getElementById('sectionFilter').value;
+            const sourceFilter = document.getElementById('sourceFilter').value;
+            const opensourceFilter = document.getElementById('opensourceFilter').value;
+            
+            filteredProjects = allProjects.filter(project => {
+                // Search filter
+                const matchesSearch = !searchTerm || 
+                    project.name.toLowerCase().includes(searchTerm) ||
+                    project.description.toLowerCase().includes(searchTerm) ||
+                    (project.section && project.section.toLowerCase().includes(searchTerm)) ||
+                    (project.subsection && project.subsection.toLowerCase().includes(searchTerm));
+                
+                // Section filter
+                const matchesSection = !sectionFilter || project.section === sectionFilter;
+                
+                // Source filter
+                const matchesSource = !sourceFilter || project.source === sourceFilter;
+                
+                // Open source filter
+                const matchesOpensource = !opensourceFilter || 
+                    (opensourceFilter === 'true' && project.opensource);
+                
+                return matchesSearch && matchesSection && matchesSource && matchesOpensource;
+            });
+            
+            document.getElementById('filteredProjects').textContent = filteredProjects.length;
+            renderResults();
+        }
+        
+        function renderResults() {
+            const container = document.getElementById('resultsContainer');
+            
+            if (filteredProjects.length === 0) {
+                container.innerHTML = '<div class="no-results">No projects found. Try adjusting your filters.</div>';
+                return;
+            }
+            
+            container.innerHTML = filteredProjects.map(project => `
+                <div class="project-card">
+                    <h3>
+                        <a href="${project.url}" target="_blank" rel="noopener noreferrer">
+                            ${escapeHtml(project.name)}
+                        </a>
+                    </h3>
+                    <p>${escapeHtml(project.description)}</p>
+                    <div class="project-meta">
+                        ${project.section ? `<span class="badge badge-section">${escapeHtml(project.section)}</span>` : ''}
+                        ${project.subsection ? `<span class="badge badge-section">${escapeHtml(project.subsection)}</span>` : ''}
+                        ${project.opensource ? '<span class="badge badge-opensource">Open Source</span>' : ''}
+                        <span class="badge badge-source">${project.source === 'main' ? 'Main List' : 'Discoveries'}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', filterProjects);
+        document.getElementById('sectionFilter').addEventListener('change', filterProjects);
+        document.getElementById('sourceFilter').addEventListener('change', filterProjects);
+        document.getElementById('opensourceFilter').addEventListener('change', filterProjects);
+        
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
+
