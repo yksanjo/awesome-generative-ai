@@ -10,6 +10,8 @@ An autonomous system that ingests, analyzes, clusters, and curates GitHub reposi
 - 🤖 **AI-Powered Summaries** - Automatically generates summaries, tags, and categories using LLMs
 - 📊 **Smart Clustering** - Groups similar repositories into curated boards
 - 🎯 **Intelligent Ranking** - Scores repositories using star velocity, health, uniqueness, and more
+- 📈 **Social Signals** - Rank repos by real-world usage (Reddit, HackerNews, Stack Overflow, npm, PyPI)
+- 🎯 **Use-Case Finder** - AI-powered library recommendations ("I want to build X" → get best libraries)
 - 🔍 **Semantic Search** - Find similar repositories using vector embeddings
 - 🌐 **Browser Extension** - Access RepoBoard directly from GitHub
 - 🚀 **One-Click Deploy** - Deploy to Railway or Render in minutes
@@ -138,6 +140,9 @@ See [telegram-bot/README.md](telegram-bot/README.md) for setup.
 
 - `GET /repos` - List/search repositories
 - `GET /repos/{id}` - Get repository details
+- `GET /repos/{id}/social-signals` - Get social signals for a repo
+- `GET /repos/ranked-by-social-signals` - Get repos ranked by real-world usage
+- `GET /use-case-finder?query=...` - Find libraries for a use case (AI-powered)
 - `GET /boards` - List all boards
 - `GET /boards/{id}` - Get board with repositories
 - `GET /search?q=query` - Search repositories
