@@ -1,0 +1,15 @@
+QUICK FIX FOR YOUR ERROR:
+
+The problem: You ran uvicorn outside the virtual environment.
+
+Solution: Always activate venv first!
+
+1. cd /Users/yoshikondo/awesome-generative-ai/repoboard
+2. source venv/bin/activate
+3. cd api
+4. uvicorn main:app --reload
+
+OR use the helper script:
+./START_API.sh
+
+That's it! The dependencies are already installed in venv.

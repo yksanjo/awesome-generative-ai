@@ -1,0 +1,211 @@
+[
+  {
+    "rank": 1,
+    "name": "sindresorhus/awesome",
+    "url": "https://github.com/sindresorhus/awesome",
+    "description": "\ud83d\ude0e Awesome lists about all kinds of interesting topics",
+    "stars": 414649,
+    "forks": 32234,
+    "language": null,
+    "topics": [
+      "awesome",
+      "awesome-list",
+      "lists",
+      "resources",
+      "unicorns"
+    ],
+    "created_at": "2014-07-11T13:42:37Z",
+    "updated_at": "2025-11-15T00:00:13Z",
+    "score": 0.9999999999999999,
+    "star_velocity": 100.06008687258688,
+    "why_recommended": "Highly popular (414,649 stars); Rising star (fast growth); Recently updated; Has license; Active project"
+  },
+  {
+    "rank": 2,
+    "name": "EbookFoundation/free-programming-books",
+    "url": "https://github.com/EbookFoundation/free-programming-books",
+    "description": ":books: Freely available programming books",
+    "stars": 376842,
+    "forks": 65385,
+    "language": "Python",
+    "topics": [
+      "books",
+      "education",
+      "hacktoberfest",
+      "list",
+      "resource"
+    ],
+    "created_at": "2013-10-11T06:50:37Z",
+    "updated_at": "2025-11-14T23:12:52Z",
+    "score": 0.9999999999999999,
+    "star_velocity": 85.31627801675346,
+    "why_recommended": "Highly popular (376,842 stars); Rising star (fast growth); Recently updated; Has license; Active project"
+  },
+  {
+    "rank": 3,
+    "name": "kamranahmedse/developer-roadmap",
+    "url": "https://github.com/kamranahmedse/developer-roadmap",
+    "description": "Interactive roadmaps, guides and other educational content to help developers grow in their careers.",
+    "stars": 343583,
+    "forks": 43369,
+    "language": "TypeScript",
+    "topics": [
+      "angular-roadmap",
+      "backend-roadmap",
+      "blockchain-roadmap",
+      "computer-science",
+      "dba-roadmap"
+    ],
+    "created_at": "2017-03-15T13:45:52Z",
+    "updated_at": "2025-11-14T23:51:07Z",
+    "score": 0.9999999999999999,
+    "star_velocity": 108.5227416298168,
+    "why_recommended": "Highly popular (343,583 stars); Rising star (fast growth); Recently updated; Has license; Active project"
+  },
+  {
+    "rank": 4,
+    "name": "donnemartin/system-design-primer",
+    "url": "https://github.com/donnemartin/system-design-primer",
+    "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
+    "stars": 326471,
+    "forks": 53163,
+    "language": "Python",
+    "topics": [
+      "design",
+      "design-patterns",
+      "design-system",
+      "development",
+      "interview"
+    ],
+    "created_at": "2017-02-26T16:15:28Z",
+    "updated_at": "2025-11-14T23:56:08Z",
+    "score": 0.9999999999999999,
+    "star_velocity": 102.56707508639649,
+    "why_recommended": "Highly popular (326,471 stars); Rising star (fast growth); Recently updated; Has license; Active project"
+  },
+  {
+    "rank": 5,
+    "name": "vinta/awesome-python",
+    "url": "https://github.com/vinta/awesome-python",
+    "description": "An opinionated list of awesome Python frameworks, libraries, software and resources.",
+    "stars": 269349,
+    "forks": 26695,
+    "language": "Python",
+    "topics": [
+      "awesome",
+      "collections",
+      "python",
+      "python-framework",
+      "python-library"
+    ],
+    "created_at": "2014-06-27T21:00:06Z",
+    "updated_at": "2025-11-14T23:56:06Z",
+    "score": 0.9999999999999999,
+    "star_velocity": 64.77849927849928,
+    "why_recommended": "Highly popular (269,349 stars); Rising star (fast growth); Recently updated; Has license; Active project"
+  },
+  {
+    "rank": 6,
+    "name": "practical-tutorials/project-based-learning",
+    "url": "https://github.com/practical-tutorials/project-based-learning",
+    "description": "Curated list of project-based tutorials",
+    "stars": 249871,
+    "forks": 32671,
+    "language": null,
+    "topics": [
+      "beginner-project",
+      "cpp",
+      "golang",
+      "javascript",
+      "project"
+    ],
+    "created_at": "2017-04-12T05:07:46Z",
+    "updated_at": "2025-11-14T23:37:15Z",
+    "score": 0.9999999999999999,
+    "star_velocity": 79.62746972594009,
+    "why_recommended": "Highly popular (249,871 stars); Rising star (fast growth); Recently updated; Has license; Active project"
+  },
+  {
+    "rank": 7,
+    "name": "facebook/react",
+    "url": "https://github.com/facebook/react",
+    "description": "The library for web and native user interfaces.",
+    "stars": 240591,
+    "forks": 49857,
+    "language": "JavaScript",
+    "topics": [
+      "declarative",
+      "frontend",
+      "javascript",
+      "library",
+      "react"
+    ],
+    "created_at": "2013-05-24T16:15:54Z",
+    "updated_at": "2025-11-14T23:00:00Z",
+    "score": 0.9999999999999999,
+    "star_velocity": 52.795918367346935,
+    "why_recommended": "Highly popular (240,591 stars); Rising star (fast growth); Recently updated; Has license; Active project"
+  },
+  {
+    "rank": 8,
+    "name": "TheAlgorithms/Python",
+    "url": "https://github.com/TheAlgorithms/Python",
+    "description": "All Algorithms implemented in Python",
+    "stars": 213089,
+    "forks": 49252,
+    "language": "Python",
+    "topics": [
+      "algorithm",
+      "algorithm-competitions",
+      "algorithms-implemented",
+      "algos",
+      "community-driven"
+    ],
+    "created_at": "2016-07-16T09:44:01Z",
+    "updated_at": "2025-11-14T23:11:31Z",
+    "score": 0.9999999999999999,
+    "star_velocity": 62.526115023474176,
+    "why_recommended": "Highly popular (213,089 stars); Rising star (fast growth); Recently updated; Has license; Active project"
+  },
+  {
+    "rank": 9,
+    "name": "vuejs/vue",
+    "url": "https://github.com/vuejs/vue",
+    "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+    "stars": 209683,
+    "forks": 33807,
+    "language": "TypeScript",
+    "topics": [
+      "framework",
+      "frontend",
+      "javascript",
+      "vue"
+    ],
+    "created_at": "2013-07-29T03:24:51Z",
+    "updated_at": "2025-11-14T21:40:23Z",
+    "score": 0.9801376085504342,
+    "star_velocity": 46.68960142507237,
+    "why_recommended": "Highly popular (209,683 stars); Rising star (fast growth); Recently updated; Has license; Active project"
+  },
+  {
+    "rank": 10,
+    "name": "freeCodeCamp/freeCodeCamp",
+    "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+    "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
+    "stars": 432107,
+    "forks": 42402,
+    "language": "TypeScript",
+    "topics": [
+      "careers",
+      "certification",
+      "community",
+      "curriculum",
+      "d3"
+    ],
+    "created_at": "2014-12-24T17:49:19Z",
+    "updated_at": "2025-11-14T23:10:41Z",
+    "score": 0.9699999999999999,
+    "star_velocity": 108.62418300653594,
+    "why_recommended": "Highly popular (432,107 stars); Rising star (fast growth); Recently updated; Has license; Active project"
+  }
+]
